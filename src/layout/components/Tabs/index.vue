@@ -3,7 +3,7 @@
     <a-tabs
       editable
       hide-content
-      size="medium"
+      size="large"
       :type="appStore.tabMode"
       :active-key="route.path"
       @tab-click="handleTabClick($event as string)"

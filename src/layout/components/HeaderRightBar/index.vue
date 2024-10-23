@@ -55,7 +55,8 @@
           <icon-down />
         </a-row>
         <template #content>
-          <a-doption @click="router.push('/setting/profile')">
+          <!-- <a-doption @click="router.push('/setting/profile')"> -->
+          <a-doption @click="test">
             <span>个人中心</span>
           </a-doption>
           <a-divider :margin="0" />
@@ -80,6 +81,7 @@ import { getUnreadMessageCount } from '@/apis'
 import { useUserStore } from '@/stores'
 import { isMobile } from '@/utils'
 import { getToken } from '@/utils/auth'
+import {getUserInfoTest } from '@/apis/test/t'
 
 defineOptions({ name: 'HeaderRight' })
 
@@ -126,6 +128,23 @@ const { isFullscreen, toggle } = useFullscreen()
 const router = useRouter()
 const userStore = useUserStore()
 const SettingDrawerRef = ref<InstanceType<typeof SettingDrawer>>()
+
+// 测试后端
+const test = async() => {
+  // 获取userId
+  let userId = userStore.userInfo.id
+  console.log('userId',userId);
+  try {
+    let res = await getUserInfoTest(userId);
+    console.log('从后端获取的数据是：',res);
+    // 跳转到个人中心
+    router.push('/setting/profile')
+  } catch (error) {
+    console.log('获取数据失败', error);
+  }
+
+}
+
 
 // 退出登录
 const logout = () => {

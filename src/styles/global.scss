@@ -1,5 +1,5 @@
 /* 全局样式 */
-@import './var.scss';
+@use './var.scss';
 // 通用外边距
 .gi_margin {
   margin: $margin;

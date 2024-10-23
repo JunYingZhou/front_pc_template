@@ -83,6 +83,21 @@ export const constantRoutes: RouteRecordRaw[] = [
         meta: { title: '消息中心', showInTabs: false }
       }
     ]
+  },
+  {
+    path: '/news',
+    name: 'News',
+    component: Layout,
+    redirect: '/news/manage',
+    meta: { title: '文章管理', icon: 'dashboard', hidden: false },
+    children: [
+      {
+        path: '/news/manage',
+        name: 'NewsManage',
+        component: () => import('@/views/news/manage/index.vue'),
+        meta: { title: '文章管理', icon: 'desktop', hidden: false }
+      }
+    ]
   }
 ]
 
